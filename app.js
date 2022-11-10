@@ -26,7 +26,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL).then(()=>{
+    console.log("connection to mongoDB database successful")
+}).catch((err)=>{
+    console.log(err)
+})
 
 const userSchema=new mongoose.Schema({
     email:String,
