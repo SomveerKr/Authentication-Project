@@ -26,7 +26,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(()=>{
+mongoose.connect(process.env.MONGODB_URL).then(()=>{
     console.log("connection to mongoDB database successful")
 }).catch((err)=>{
     console.log(err)
