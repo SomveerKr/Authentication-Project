@@ -19,8 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({
     secret:"My true secret.",
     resave:false,
-    saveUninitialized: true,
-
+    saveUninitialized: true
 }));
 
 app.use(passport.initialize());
@@ -48,9 +47,7 @@ const User=new mongoose.model("User", userSchema);
 passport.use(User.createStrategy());
 
 passport.serializeUser(function(user, done) {
-    done(null, user._id);
-    // if you use Model.id as your idAttribute maybe you'd want
-    // done(null, user.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
